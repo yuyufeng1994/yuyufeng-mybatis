@@ -61,6 +61,10 @@
             <mvc:mapping path="/**"/>
             <bean class="top.yuyufeng.interceptor.URLBrokerLauncherInterceptor"></bean>
         </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/admin/**"/>
+            <bean class="top.yuyufeng.interceptor.AuthorityInterceptor"></bean>
+        </mvc:interceptor>
 
     </mvc:interceptors>
 
