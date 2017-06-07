@@ -2,6 +2,8 @@ package top.yuyufeng.dao;
 
 import top.yuyufeng.entity.ArticleInfo;
 
+import java.util.List;
+
 public interface ArticleInfoMapper {
     int deleteByPrimaryKey(Long articleId);
 
@@ -16,4 +18,6 @@ public interface ArticleInfoMapper {
     int updateByPrimaryKeyWithBLOBs(ArticleInfo record);
 
     int updateByPrimaryKey(ArticleInfo record);
+
+    List<ArticleInfo>  queryList();
 }

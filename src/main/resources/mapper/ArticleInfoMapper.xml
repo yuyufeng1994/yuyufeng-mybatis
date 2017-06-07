@@ -5,6 +5,7 @@
     <constructor>
       <idArg column="article_id" javaType="java.lang.Long" jdbcType="BIGINT" />
       <arg column="article_title" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="article_subtitle" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="article_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
       <arg column="article_photo_path" javaType="java.lang.String" jdbcType="VARCHAR" />
     </constructor>
@@ -13,13 +14,14 @@
     <constructor>
       <idArg column="article_id" javaType="java.lang.Long" jdbcType="BIGINT" />
       <arg column="article_title" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="article_subtitle" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="article_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
       <arg column="article_photo_path" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="article_content" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List">
-    article_id, article_title, article_time, article_photo_path
+    article_id, article_title, article_subtitle, article_time, article_photo_path
   </sql>
   <sql id="Blob_Column_List">
     article_content
@@ -37,10 +39,12 @@
     where article_id = #{articleId,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="top.yuyufeng.entity.ArticleInfo">
-    insert into article_info (article_id, article_title, article_time, 
-      article_photo_path, article_content)
-    values (#{articleId,jdbcType=BIGINT}, #{articleTitle,jdbcType=VARCHAR}, #{articleTime,jdbcType=TIMESTAMP}, 
-      #{articlePhotoPath,jdbcType=VARCHAR}, #{articleContent,jdbcType=LONGVARCHAR})
+    insert into article_info (article_id, article_title, article_subtitle, 
+      article_time, article_photo_path, article_content
+      )
+    values (#{articleId,jdbcType=BIGINT}, #{articleTitle,jdbcType=VARCHAR}, #{articleSubtitle,jdbcType=VARCHAR}, 
+      #{articleTime,jdbcType=TIMESTAMP}, #{articlePhotoPath,jdbcType=VARCHAR}, #{articleContent,jdbcType=LONGVARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="top.yuyufeng.entity.ArticleInfo">
     insert into article_info
@@ -50,6 +54,9 @@
       </if>
       <if test="articleTitle != null">
         article_title,
+      </if>
+      <if test="articleSubtitle != null">
+        article_subtitle,
       </if>
       <if test="articleTime != null">
         article_time,
@@ -68,6 +75,9 @@
       <if test="articleTitle != null">
         #{articleTitle,jdbcType=VARCHAR},
       </if>
+      <if test="articleSubtitle != null">
+        #{articleSubtitle,jdbcType=VARCHAR},
+      </if>
       <if test="articleTime != null">
         #{articleTime,jdbcType=TIMESTAMP},
       </if>
@@ -85,6 +95,9 @@
       <if test="articleTitle != null">
         article_title = #{articleTitle,jdbcType=VARCHAR},
       </if>
+      <if test="articleSubtitle != null">
+        article_subtitle = #{articleSubtitle,jdbcType=VARCHAR},
+      </if>
       <if test="articleTime != null">
         article_time = #{articleTime,jdbcType=TIMESTAMP},
       </if>
@@ -100,6 +113,7 @@
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="top.yuyufeng.entity.ArticleInfo">
     update article_info
     set article_title = #{articleTitle,jdbcType=VARCHAR},
+      article_subtitle = #{articleSubtitle,jdbcType=VARCHAR},
       article_time = #{articleTime,jdbcType=TIMESTAMP},
       article_photo_path = #{articlePhotoPath,jdbcType=VARCHAR},
       article_content = #{articleContent,jdbcType=LONGVARCHAR}
@@ -108,8 +122,17 @@
   <update id="updateByPrimaryKey" parameterType="top.yuyufeng.entity.ArticleInfo">
     update article_info
     set article_title = #{articleTitle,jdbcType=VARCHAR},
+      article_subtitle = #{articleSubtitle,jdbcType=VARCHAR},
       article_time = #{articleTime,jdbcType=TIMESTAMP},
       article_photo_path = #{articlePhotoPath,jdbcType=VARCHAR}
     where article_id = #{articleId,jdbcType=BIGINT}
   </update>
+
+  <select id="queryList" resultMap="ResultMapWithBLOBs">
+    select
+    <include refid="Base_Column_List"/>
+    ,
+    <include refid="Blob_Column_List"/>
+    from article_info
+  </select>
 </mapper>

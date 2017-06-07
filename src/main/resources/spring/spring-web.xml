@@ -57,6 +57,10 @@
             <mvc:mapping path="/**"/>
             <bean class="top.yuyufeng.interceptor.MainInterceptor"></bean>
         </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="top.yuyufeng.interceptor.URLBrokerLauncherInterceptor"></bean>
+        </mvc:interceptor>
 
     </mvc:interceptors>
 

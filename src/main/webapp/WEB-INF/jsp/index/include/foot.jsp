@@ -38,21 +38,21 @@
                         </a>
                     </li>
                 </ul>
-                <p class="copyright text-muted"><img src="/static/image/备案图标.png"><a href="http://www.miitbeian.gov.cn/">浙ICP备17023003号</a></p>
+                <p class="copyright text-muted"><img src="${staticServer}/static/image/备案图标.png"> <a href="http://www.miitbeian.gov.cn/">浙ICP备17023003号</a></p>
             </div>
         </div>
     </div>
 </footer>
 
 <!-- jQuery -->
-<script src="/static/vendor/jquery/jquery.min.js"></script>
+<script src="${staticServer}/static/vendor/jquery/jquery.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="/static/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="${staticServer}/static/vendor/bootstrap/js/bootstrap.min.js"></script>
 
 <!-- Contact Form JavaScript -->
-<script src="/static/vendor/cleanblog/js/jqBootstrapValidation.js"></script>
-<script src="/static/vendor/cleanblog/js/contact_me.js"></script>
+<script src="${staticServer}/static/vendor/cleanblog/js/jqBootstrapValidation.js"></script>
+<script src="${staticServer}/static/vendor/cleanblog/js/contact_me.js"></script>
 
 <!-- Theme JavaScript -->
-<script src="/static/vendor/cleanblog/js/clean-blog.min.js"></script>
+<script src="${staticServer}/static/vendor/cleanblog/js/clean-blog.min.js"></script>

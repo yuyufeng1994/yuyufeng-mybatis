@@ -15,16 +15,13 @@
 <!-- Navigation -->
 <%@include file="/WEB-INF/jsp/index/include/nav.jsp" %>
 
-<!-- Page Header -->
-<!-- Set your background image for this header on the line below. -->
 <header class="intro-header" style="background-image: url('/static/vendor/cleanblog/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="site-heading">
-                    <h1>YuYu</h1>
+                    <h1>文章列表</h1>
                     <hr class="small">
-                    <span class="subheading">正在开发建设中……</span>
                 </div>
             </div>
         </div>
@@ -53,7 +50,7 @@
             <!-- Pager -->
             <ul class="pager">
                 <li class="next">
-                    <a href="${app.server}/list/1">Older Posts &rarr;</a>
+                    <a href="#">查看更多&rarr;</a>
                 </li>
             </ul>
         </div>

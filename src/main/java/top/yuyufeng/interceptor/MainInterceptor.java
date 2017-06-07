@@ -33,6 +33,7 @@ public class MainInterceptor implements HandlerInterceptor {
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object object,
 			ModelAndView modelAndView) throws Exception {
+
 	}
 
 	// 进入Handler方法之前

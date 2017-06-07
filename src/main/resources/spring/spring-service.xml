@@ -4,6 +4,7 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
@@ -12,7 +13,8 @@
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
         http://www.springframework.org/schema/tx
-        http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+        http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
 
 
     <!--扫描service包(包含子包)下所有使用注解的类型-->
@@ -25,5 +27,15 @@
 
     <!--配置基于注解的声明式事务,默认使用注解来管理事务行为-->
     <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <util:map id="urlMap" map-class="java.util.HashMap">
+        <entry key="appServer" value="${server.app}"/>
+        <entry key="fileServer" value="${server.file}"/>
+        <entry key="staticServer" value="${server.static}"/>
+    </util:map>
+
+    <util:map id="proMap" map-class="java.util.HashMap">
+        <entry key="fileContent" value="${file.content}"/>
+    </util:map>
 
 </beans>
