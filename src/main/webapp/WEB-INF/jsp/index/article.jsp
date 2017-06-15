@@ -35,11 +35,26 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-               ${article.articleContent}
+                ${article.articleContent}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <!--PC版-->
+                <div id="SOHUCS" sid="article${article.articleId}"></div>
+                <script charset="utf-8" type="text/javascript"
+                        src="https://changyan.sohu.com/upload/changyan.js"></script>
+                <script type="text/javascript">
+                    window.changyan.api.config({
+                        appid: 'cyt41ItsL',
+                        conf: 'prod_892fe75589e3056d5f79d26919f03104'
+                    });
+                </script>
             </div>
         </div>
     </div>
 </article>
+
 
 <%@include file="/WEB-INF/jsp/index/include/foot.jsp" %>
 </body>
