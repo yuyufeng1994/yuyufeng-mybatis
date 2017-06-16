@@ -13,31 +13,32 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <ul class="list-inline text-center">
-                    <%--<li>
-                        <a href="#">
+                    <li>
+                        <a href="http://blog.csdn.net/qq_18860653" target="_blank">
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                    <i class="fa fa-adn fa-stack-1x fa-inverse"></i>
                                 </span>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="#" target="_blank">
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                    <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
                                 </span>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="https://github.com/yyfyyf1994" target="_blank">
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
                                     <i class="fa fa-github fa-stack-1x fa-inverse"></i>
                                 </span>
                         </a>
-                    </li>--%>
+                    </li>
                 </ul>
+                <p class="copyright text-muted"><img src="${staticServer}/static/image/icon.jpg" width="25" height="25"> <a href="http://www.yuyufeng.top">心得站点</a></p>
                 <p class="copyright text-muted"><img src="${staticServer}/static/image/备案图标.png"> <a href="http://www.miitbeian.gov.cn/">浙ICP备17023003号</a></p>
             </div>
         </div>

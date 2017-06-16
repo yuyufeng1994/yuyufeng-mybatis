@@ -22,9 +22,9 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="site-heading">
-                    <h1>YuYu</h1>
+                    <h1>yuyu</h1>
                     <hr class="small">
-                    <span class="subheading">正在开发建设中……</span>
+                    <span class="subheading">yuyufeng的个人网站</span>
                 </div>
             </div>
         </div>
