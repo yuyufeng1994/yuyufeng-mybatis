@@ -53,7 +53,7 @@
             <!-- Pager -->
             <ul class="pager">
                 <li class="next">
-                    <a href="${app.server}/list/1">Older Posts &rarr;</a>
+                    <a href="${appServer}/list/1">Older Posts &rarr;</a>
                 </li>
             </ul>
         </div>

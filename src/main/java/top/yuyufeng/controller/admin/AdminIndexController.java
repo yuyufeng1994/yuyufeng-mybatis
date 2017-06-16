@@ -6,10 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 /**
  * Created by yuyufeng on 2017/6/7.
  */
-@Controller()
+@Controller
 @RequestMapping("/admin")
 public class AdminIndexController {
-    @RequestMapping("/index")
+
+    @RequestMapping({"/index","/"})
     public String toIndex() {
         return "admin/index";
     }
