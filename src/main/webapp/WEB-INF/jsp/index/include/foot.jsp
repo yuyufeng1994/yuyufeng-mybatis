@@ -46,10 +46,12 @@
 </footer>
 
 <!-- jQuery -->
-<script src="${staticServer}/static/vendor/jquery/jquery.min.js"></script>
+<%--<script src="${staticServer}/static/vendor/jquery/jquery.min.js"></script>--%>
+<script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="${staticServer}/static/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<%--<script src="${staticServer}/static/vendor/bootstrap/js/bootstrap.min.js"></script>--%>
 
 <!-- Contact Form JavaScript -->
 <script src="${staticServer}/static/vendor/cleanblog/js/jqBootstrapValidation.js"></script>
