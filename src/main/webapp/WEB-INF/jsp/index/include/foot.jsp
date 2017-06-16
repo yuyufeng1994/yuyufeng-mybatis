@@ -54,7 +54,8 @@
 <%--<script src="${staticServer}/static/vendor/bootstrap/js/bootstrap.min.js"></script>--%>
 
 <!-- Contact Form JavaScript -->
-<script src="${staticServer}/static/vendor/cleanblog/js/jqBootstrapValidation.js"></script>
+<script src="http://cdn.bootcss.com/jqBootstrapValidation/1.3.6/jqBootstrapValidation.min.js"></script>
+<%--<script src="${staticServer}/static/vendor/cleanblog/js/jqBootstrapValidation.js"></script>--%>
 <script src="${staticServer}/static/vendor/cleanblog/js/contact_me.js"></script>
 
 <!-- Theme JavaScript -->
