@@ -34,12 +34,15 @@
                         </div>
                         <div class="panel-body">
                             <form role="form" action="${appServer}/doLogin">
+                                <input type="hidden" name="returnUrl" value="${returnUrl}">
                                 <fieldset>
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="用户名" name="username" type="text" autofocus>
+                                        <input class="form-control" placeholder="用户名" name="username" type="text"
+                                               autofocus>
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="密码" name="password" type="password" value="">
+                                        <input class="form-control" placeholder="密码" name="password" type="password"
+                                               value="">
                                     </div>
                                     <!-- Change this to a button or input when using this as a form -->
                                     <button type="submit" class="btn btn-lg btn-success btn-block">立即登录</button>

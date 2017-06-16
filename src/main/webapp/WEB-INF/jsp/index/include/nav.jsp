@@ -15,23 +15,23 @@
                 <span class="sr-only">Toggle navigation</span>
                 Menu <i class="fa fa-bars"></i>
             </button>
-            <a class="navbar-brand" href="${app.server}/home">心得站点</a>
+            <a class="navbar-brand" href="${appServer}/home">心得站点</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="${app.server}/home">主页</a>
+                    <a href="${appServer}/home">主页</a>
                 </li>
                 <li>
-                    <a href="${app.server}/about">关于</a>
+                    <a href="${appServer}/about">关于</a>
                 </li>
                 <li>
-                    <a href="${app.server}/list/1">文章</a>
+                    <a href="${appServer}/list/1">文章</a>
                 </li>
                 <li>
-                    <a href="${app.server}/contact">联系</a>
+                    <a href="${appServer}/contact">联系</a>
                 </li>
             </ul>
         </div>

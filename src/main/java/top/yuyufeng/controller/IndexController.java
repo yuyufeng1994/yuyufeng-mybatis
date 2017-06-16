@@ -73,12 +73,13 @@ public class IndexController {
     }
 
     @RequestMapping("/login")
-    public String toLogin() {
+    public String toLogin(String returnUrl, Model model) {
+        model.addAttribute("returnUrl", returnUrl);
         return "admin/login";
     }
 
     @RequestMapping("/doLogin")
-    public String doLogin(String username, String password, HttpSession session) throws IOException {
+    public String doLogin(String username, String password, HttpSession session, String returnUrl) throws IOException {
         if (null == username || null == password) {
             return "redirect:" + urlMap.get("appServer") + "/login";
         }
@@ -102,7 +103,13 @@ public class IndexController {
             return "redirect:" + urlMap.get("appServer") + "/login?msg=pwdError";
         }
 
-        return "redirect:" + urlMap.get("appServer") + "/";
+        return "redirect:" + returnUrl;
+    }
+
+    @RequestMapping("/quit")
+    public String doQuit(HttpSession session) {
+        session.invalidate();
+        return "redirect:/";
     }
 
 

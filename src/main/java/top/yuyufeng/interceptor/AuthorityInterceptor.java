@@ -17,12 +17,14 @@ public class AuthorityInterceptor implements HandlerInterceptor {
     private Map<String, String> urlMap;
 
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+
+        String url = request.getRequestURL().toString();
         HttpSession session = request.getSession();
         String res = (String) session.getAttribute("ISUSERLOGIN");
         if (res != null && "true".equals(res)) {
             return true;
         }
-        response.sendRedirect(urlMap.get("appServer") + "/login");
+        response.sendRedirect(urlMap.get("appServer") + "/login?returnUrl=" + url);
         return false;
     }
 

@@ -29,11 +29,11 @@
                     <a href="${appServer}/admin/index"><i class="glyphicon glyphicon-home"></i> 主页</a>
                 </li>
                 <li>
-                    <a href="${appServer}/admin/article"><i class="fa fa-bar-chart-o fa-truck"></i> 分销商</a>
+                    <a href="${appServer}/admin/article"><i class="fa fa-bar-chart-o fa-truck"></i> 文章</a>
                 </li>
                 <li class="divider"></li>
                 <li>
-                    <a href="${appServer}/admin/quit"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
+                    <a href="${appServer}/quit"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
                 </li>
             </ul>
             <!-- /.dropdown-user -->
