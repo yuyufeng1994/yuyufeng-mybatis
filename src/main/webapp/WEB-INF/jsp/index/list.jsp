@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="site-heading">
-                    <h1>文章列表</h1>
+                    <h1>我的博客</h1>
                     <hr class="small">
                 </div>
             </div>
@@ -32,11 +32,11 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <c:forEach items="${page}" var="a">
+            <c:forEach items="${page.list}" var="a">
                 <div class="post-preview">
                     <a href="${appServer}/article/${a.articleId}">
                         <h2 class="post-title">
-                            ${a.articleTitle}
+                                ${a.articleTitle}
                         </h2>
                         <h3 class="post-subtitle">
                                 ${a.articleSubtitle}
@@ -46,12 +46,27 @@
                 </div>
                 <hr>
             </c:forEach>
-
             <!-- Pager -->
-            <ul class="pager">
-                <li class="next">
-                    <a href="#">查看更多&rarr;</a>
-                </li>
+            <ul class="pagination pagination-lg">
+                <c:if test="${page.pageNum != 1}">
+                    <li><a href="${appServer}/list/1">&laquo;</a></li>
+                </c:if>
+                <c:forEach items="${page.navigatepageNums}" var="c">
+                    <c:if test="${c == page.pageNum}">
+                        <li class="active">
+                            <a>${c}</a>
+                        </li>
+                    </c:if>
+                    <c:if test="${c != page.pageNum}">
+                        <li>
+                            <a href="${appServer}/list/${c}">${c}</a>
+                        </li>
+                    </c:if>
+                </c:forEach>
+                <c:if test="${page.pageNum != page.pages}">
+                    <li><a href="${appServer}/list/${page.pages}">&raquo;</a></li>
+                </c:if>
+
             </ul>
         </div>
     </div>

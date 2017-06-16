@@ -24,6 +24,7 @@
                     <h1>Contact Me</h1>
                     <hr class="small">
                     <span class="subheading">Have questions? I have answers (maybe).</span>
+                    <span class="subheading">Email:yuyf123@foxmail.com</span>
                 </div>
             </div>
         </div>

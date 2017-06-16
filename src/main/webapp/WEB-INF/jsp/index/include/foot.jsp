@@ -22,7 +22,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" target="_blank">
+                        <a href="http://weibo.com/fomyee" target="_blank">
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
                                     <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
@@ -38,7 +38,7 @@
                         </a>
                     </li>
                 </ul>
-                <p class="copyright text-muted"><img src="${staticServer}/static/image/icon.jpg" width="25" height="25"> <a href="http://www.yuyufeng.top">心得站点</a></p>
+                <p class="copyright text-muted">Copyright &copy; 心得站点 2017</p>
                 <p class="copyright text-muted"><img src="${staticServer}/static/image/备案图标.png"> <a href="http://www.miitbeian.gov.cn/">浙ICP备17023003号</a></p>
             </div>
         </div>

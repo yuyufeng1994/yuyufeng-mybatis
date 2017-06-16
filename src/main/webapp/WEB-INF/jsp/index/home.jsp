@@ -35,7 +35,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <c:forEach items="${page}" var="a">
+            <c:forEach items="${page.list}" var="a">
                 <div class="post-preview">
                     <a href="${appServer}/article/${a.articleId}">
                         <h2 class="post-title">

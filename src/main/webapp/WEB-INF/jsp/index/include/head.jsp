@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="shortcut icon" href="${staticServer}/static/image/icon.jpg" type="image/x-icon" />
+<link rel="shortcut icon" href="${staticServer}/static/image/icon.png" type="image/x-icon" />
 
 <title>心得站点</title>
 

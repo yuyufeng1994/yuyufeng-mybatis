@@ -2,6 +2,7 @@ package top.yuyufeng.controller;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,7 +36,7 @@ public class IndexController {
 
     @RequestMapping("/home")
     public String toHome(Model model) {
-        Page<ArticleInfo> page = articleService.queryPageOrderByTime(1, 5);
+        PageInfo<ArticleInfo> page = articleService.queryPageOrderByTime(1, 5);
         model.addAttribute("page", page);
         return "index/home";
     }
@@ -67,7 +68,7 @@ public class IndexController {
 
     @RequestMapping("/list/{pageNo}")
     public String toList(Model model, @PathVariable("pageNo") int pageNo) {
-        Page<ArticleInfo> page = articleService.queryPageOrderByTime(pageNo, 10);
+        PageInfo<ArticleInfo> page = articleService.queryPageOrderByTime(pageNo, 10);
         model.addAttribute("page", page);
         return "index/list";
     }
@@ -79,7 +80,7 @@ public class IndexController {
     }
 
     @RequestMapping("/doLogin")
-    public String doLogin(String username, String password, HttpSession session, String returnUrl) throws IOException {
+    public String doLogin(String username, String password, HttpSession session,String returnUrl) throws IOException {
         if (null == username || null == password) {
             return "redirect:" + urlMap.get("appServer") + "/login";
         }

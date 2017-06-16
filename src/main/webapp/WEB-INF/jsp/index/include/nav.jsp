@@ -15,7 +15,7 @@
                 <span class="sr-only">Toggle navigation</span>
                 Menu <i class="fa fa-bars"></i>
             </button>
-            <a class="navbar-brand" href="${appServer}/home">yuyu</a>
+            <a class="navbar-brand" href="${appServer}/home">YuYu</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -28,7 +28,7 @@
                     <a href="${appServer}/about">关于</a>
                 </li>
                 <li>
-                    <a href="${appServer}/list/1">文章</a>
+                    <a href="${appServer}/list/1">博客</a>
                 </li>
                 <li>
                     <a href="${appServer}/contact">联系</a>

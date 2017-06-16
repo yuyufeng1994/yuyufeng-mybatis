@@ -2,6 +2,7 @@ package top.yuyufeng.service;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import top.yuyufeng.dao.ArticleInfoMapper;
@@ -26,11 +27,11 @@ public class ArticleService {
         return articleInfoMapper.selectByPrimaryKey(articleId);
     }
 
-    public Page<ArticleInfo> queryPageOrderByTime(int i, int i1) {
-        Page<ArticleInfo> page = new Page<ArticleInfo>();
+    public PageInfo<ArticleInfo> queryPageOrderByTime(int i, int i1) {
+
         PageHelper.startPage(i, i1, "article_time desc");
         List<ArticleInfo> list = articleInfoMapper.queryList();
-        page = (Page<ArticleInfo>) list;
+        PageInfo<ArticleInfo> page = new PageInfo<ArticleInfo>(list, 10);
         return page;
     }
 }
