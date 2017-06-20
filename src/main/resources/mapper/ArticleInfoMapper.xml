@@ -46,7 +46,7 @@
       #{articleTime,jdbcType=TIMESTAMP}, #{articlePhotoPath,jdbcType=VARCHAR}, #{articleContent,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="top.yuyufeng.entity.ArticleInfo">
+  <insert id="insertSelective" parameterType="top.yuyufeng.entity.ArticleInfo" useGeneratedKeys="true"  keyProperty="articleId">
     insert into article_info
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="articleId != null">

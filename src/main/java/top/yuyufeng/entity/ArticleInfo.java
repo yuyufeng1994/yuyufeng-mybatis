@@ -75,5 +75,15 @@ public class ArticleInfo {
         return articleContent;
     }
 
-  
+    @Override
+    public String toString() {
+        return "ArticleInfo{" +
+                "articleId=" + articleId +
+                ", articleTitle='" + articleTitle + '\'' +
+                ", articleSubtitle='" + articleSubtitle + '\'' +
+                ", articleTime=" + articleTime +
+                ", articlePhotoPath='" + articlePhotoPath + '\'' +
+                ", articleContent='" + articleContent + '\'' +
+                '}';
+    }
 }

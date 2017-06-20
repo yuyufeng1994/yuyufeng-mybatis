@@ -46,13 +46,12 @@ public class ArticleDaoTest {
 
     @Test
     public void testInsert(){
-        for (int i = 0; i < 100; i++) {
             ArticleInfo record = new ArticleInfo();
             record.setArticleTitle("test");
             record.setArticleSubtitle("testSub");
             record.setArticleTime(new Date());
             articleInfoMapper.insertSelective(record);
-        }
+        System.out.println(record);
 
     }
 

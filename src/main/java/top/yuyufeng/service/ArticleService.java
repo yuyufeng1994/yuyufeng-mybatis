@@ -23,6 +23,10 @@ public class ArticleService {
         return articleInfoMapper.insertSelective(articleInfo);
     }
 
+    public int update(ArticleInfo articleInfo) {
+        return articleInfoMapper.updateByPrimaryKeySelective(articleInfo);
+    }
+
     public ArticleInfo getArticle(Long articleId) {
         return articleInfoMapper.selectByPrimaryKey(articleId);
     }

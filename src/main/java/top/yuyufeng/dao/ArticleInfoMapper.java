@@ -19,5 +19,5 @@ public interface ArticleInfoMapper {
 
     int updateByPrimaryKey(ArticleInfo record);
 
-    List<ArticleInfo>  queryList();
+    List<ArticleInfo> queryList();
 }

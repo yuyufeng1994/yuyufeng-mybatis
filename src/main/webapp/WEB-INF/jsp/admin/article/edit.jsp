@@ -20,7 +20,7 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">发表文章</h1>
+                <h1 class="page-header">编辑文章</h1>
 
             </div>
             <!-- /.col-lg-12 -->
@@ -28,32 +28,35 @@
         <!-- /.row -->
         <div class="row">
             <div class="col-lg-12">
-                <form role="form" method="post" id="my-form" action="${appServer}/admin/article/publish">
+                <form role="form" method="post" id="my-form" action="${appServer}/admin/article/doEdit">
+                    <input type="hidden" name="articleId" value="${article.articleId}">
                     <div class="form-group">
                         <label>标题</label>
-                        <input class="form-control" name="articleTitle">
+                        <input class="form-control" name="articleTitle" value="${article.articleTitle}">
                         <p class="help-block">请输入标题</p>
                     </div>
                     <div class="form-group">
                         <label>二级标题</label>
-                        <input class="form-control" name="articleSubtitle">
-                        <p class="help-block">请输入标题</p>
+                        <input class="form-control" name="articleSubtitle" value="${article.articleSubtitle}">
+                        <p class="help-block">请输入二级标题</p>
                     </div>
 
                     <div class="form-group">
                         <label>封面</label>
-                        <input class="form-control" name="articlePhotoPath" id="articlePhotoPath">
+                        <input class="form-control" name="articlePhotoPath" id="articlePhotoPath"
+                               value="${article.articlePhotoPath}">
                         <p class="help-block">请输入封面图片地址</p>
                     </div>
 
                     <div class="form-group">
                         <label>正文</label>
                         <div id="editor">
+
                         </div>
                         <p class="help-block">请输入正文</p>
                     </div>
                     <input type="hidden" value="" name="articleContent" id="articleContent">
-                    <button type="button" class="btn btn-default" id="publish-button">发表</button>
+                    <button type="button" class="btn btn-default" id="publish-button">修改</button>
                 </form>
                 <hr/>
 
@@ -89,7 +92,7 @@
                     }
                     // 或者 var editor = new E( document.getElementById('#editor') )
                     editor.create()
-
+                    editor.txt.html('${article.articleContent}')
 
                 </script>
             </div>
