@@ -50,9 +50,7 @@
 
                     <div class="form-group">
                         <label>正文</label>
-                        <div id="editor">
-
-                        </div>
+                        <div id="editor">${article.articleContent}</div>
                         <p class="help-block">请输入正文</p>
                     </div>
                     <input type="hidden" value="" name="articleContent" id="articleContent">
@@ -92,7 +90,7 @@
                     }
                     // 或者 var editor = new E( document.getElementById('#editor') )
                     editor.create()
-                    editor.txt.html('${article.articleContent}')
+                    <%--editor.txt.html("${article.articleContent}");--%>
 
                 </script>
             </div>

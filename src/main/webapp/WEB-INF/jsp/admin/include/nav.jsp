@@ -66,7 +66,7 @@
                             <a href="${appServer}/admin/article/new">发表文章</a>
                         </li>
                         <li>
-                            <a href="${appServer}/admin/article/manage">文章管理</a>
+                            <a href="${appServer}/admin/article/manage/1">文章管理</a>
                         </li>
 
                     </ul>

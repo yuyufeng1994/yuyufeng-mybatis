@@ -29,7 +29,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="alert alert-success">
-                    ${messageVo.content} <a href="${messageVo.href}" target="_blank" class="alert-link">${messageVo.linkName}</a>
+                    <h2>${messageVo.content}</h2>
+                    <a href="${messageVo.href}"  target="_blank" class="alert-link btn btn-info">${messageVo.linkName}</a> <a class="btn btn-default" href="javascript:history.back(-1)">返回</a>
                 </div>
             </div>
         </div>

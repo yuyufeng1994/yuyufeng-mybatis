@@ -38,4 +38,8 @@ public class ArticleService {
         PageInfo<ArticleInfo> page = new PageInfo<ArticleInfo>(list, 10);
         return page;
     }
+
+    public int delArticle(Long articleId) {
+        return articleInfoMapper.deleteByPrimaryKey(articleId);
+    }
 }

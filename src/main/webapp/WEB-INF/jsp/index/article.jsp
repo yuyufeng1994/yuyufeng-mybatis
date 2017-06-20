@@ -20,11 +20,11 @@
 <header class="intro-header" style="background-image: url('${article.articlePhotoPath}')">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-heading">
-                    <h1>${article.articleTitle}</h1>
-                    <h2 class="subheading">${article.articleSubtitle}</h2>
-                    <span class="meta">Posted by <a href="#">yyf</a> on ${article.articleTime}</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-2">
+                <div class="post-heading" >
+                    <h1><span style="background-color:#333333">${article.articleTitle}</span></h1>
+                    <h2 class="subheading"><span style="background-color:#333333">${article.articleSubtitle}</span></h2>
+                    <span class="meta" style="background-color:#333333">Posted by <a href="#">yyf</a> on ${article.articleTime}</span>
                 </div>
             </div>
         </div>
