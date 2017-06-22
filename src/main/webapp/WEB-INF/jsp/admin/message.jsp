@@ -30,7 +30,7 @@
             <div class="col-lg-12">
                 <div class="alert alert-success">
                     <h2>${messageVo.content}</h2>
-                    <a href="${messageVo.href}"  target="_blank" class="alert-link btn btn-info">${messageVo.linkName}</a> <a class="btn btn-default" href="javascript:history.back(-1)">返回</a>
+                    <a href="${messageVo.href}"  class="alert-link btn btn-info">${messageVo.linkName}</a> <%--<a class="btn btn-default" href="javascript:history.back(-1)">返回</a>--%>
                 </div>
             </div>
         </div>

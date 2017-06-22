@@ -41,11 +41,18 @@
                     </thead>
                     <tbody>
                     <c:forEach items="${page.list}" var="a">
-                        <tr >
+                        <tr>
                             <td>${a.articleId}</td>
                             <td><a href="${appServer}/article/${a.articleId}" target="_blank">${a.articleTitle}</a></td>
-                            <td><fmt:formatDate value="${a.articleTime}" type="both" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-                            <td><a href="${appServer}/admin/article/edit/${a.articleId}?pageNo=${page.pageNum}" class="btn btn-info">修改</a> <a href="${appServer}/admin/article/delete/${a.articleId}?pageNo=${page.pageNum}" class="btn btn-danger">删除</a> </td>
+                            <td><fmt:formatDate value="${a.articleTime}" type="both"
+                                                pattern="yyyy-MM-dd HH:mm:ss"/></td>
+                            <td><a href="${appServer}/admin/article/edit/${a.articleId}?pageNo=${page.pageNum}"
+                                   class="btn btn-info">修改</a>
+                                <button class="btn btn-danger"
+                                        onclick="del('${appServer}/admin/article/delete/${a.articleId}?pageNo=${page.pageNum}')">
+                                    删除
+                                </button>
+                            </td>
                         </tr>
                     </c:forEach>
                     </tbody>
@@ -88,6 +95,17 @@
         $("#articleContent").val(editor.txt.html())
         $("#my-form").submit();
     })
+
+
+    function del(url) {
+        if (window.confirm('你确定要删除吗？')) {
+            window.location.href = url;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
 </script>
 </html>

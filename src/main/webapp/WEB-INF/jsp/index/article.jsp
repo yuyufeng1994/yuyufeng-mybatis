@@ -10,6 +10,12 @@
 <head>
     <title>${article.articleTitle}——yuyufeng的博客</title>
     <%@include file="/WEB-INF/jsp/index/include/head.jsp" %>
+    <style>
+        .font-cor{
+            /*background-color:#FFFFFF;*/
+            /*color:#333;*/
+        }
+    </style>
 </head>
 <body>
 <!-- Navigation -->
@@ -22,9 +28,9 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-2">
                 <div class="post-heading" >
-                    <h1><span style="background-color:#333333">${article.articleTitle}</span></h1>
-                    <h2 class="subheading"><span style="background-color:#333333">${article.articleSubtitle}</span></h2>
-                    <span class="meta" style="background-color:#333333">Posted by <a href="#">yyf</a> on ${article.articleTime}</span>
+                    <h1><span class="font-cor">${article.articleTitle}</span></h1>
+                    <h2 class="subheading font-cor"><span>${article.articleSubtitle}</span></h2>
+                    <span class="meta font-cor" >Posted by <a href="#">yyf</a> on ${article.articleTime}</span>
                 </div>
             </div>
         </div>

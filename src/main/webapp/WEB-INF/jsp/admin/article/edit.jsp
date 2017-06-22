@@ -30,6 +30,7 @@
             <div class="col-lg-12">
                 <form role="form" method="post" id="my-form" action="${appServer}/admin/article/doEdit">
                     <input type="hidden" name="articleId" value="${article.articleId}">
+                    <input type="hidden" name="pageNo" value="${param.pageNo}">
                     <div class="form-group">
                         <label>标题</label>
                         <input class="form-control" name="articleTitle" value="${article.articleTitle}">

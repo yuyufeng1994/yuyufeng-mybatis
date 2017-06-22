@@ -40,10 +40,11 @@ public class ArticleController {
 
 
     @RequestMapping("/doEdit")
-    public String toEdit(ArticleInfo articleInfo, Model model) {
+    public String toEdit(ArticleInfo articleInfo, Model model,int pageNo) {
         articleInfo.setArticleTime(new Date());
         articleService.update(articleInfo);
-        model.addAttribute("messageVo", new MessageVo("修改成功！", urlMap.get("appServer") + "/article/" + articleInfo.getArticleId(), "立即查看"));
+//        model.addAttribute("messageVo", new MessageVo("修改成功！", urlMap.get("appServer") + "/article/" + articleInfo.getArticleId(), "立即查看"));
+        model.addAttribute("messageVo", new MessageVo("修改成功！", urlMap.get("appServer") + "/admin/article/manage/" + pageNo, "返回"));
         return "admin/message";
     }
 
