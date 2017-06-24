@@ -13,7 +13,7 @@
 <meta name="author" content="">
 <link rel="shortcut icon" href="${staticServer}/static/image/icon.png" type="image/x-icon" />
 
-<title>心得站点</title>
+<title>yuyufeng</title>
 
 <!-- Bootstrap Core CSS -->
 <%--<link href="${staticServer}/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">--%>

@@ -9,6 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <title>首页</title>
     <%@include file="/WEB-INF/jsp/index/include/head.jsp" %>
 </head>
 <body>
@@ -22,9 +23,9 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="site-heading">
-                    <h1>yuyu</h1>
+                    <h1>yuyufeng</h1>
                     <hr class="small">
-                    <span class="subheading">yuyufeng的个人网站</span>
+                    <span class="subheading">的个人网站</span>
                 </div>
             </div>
         </div>
