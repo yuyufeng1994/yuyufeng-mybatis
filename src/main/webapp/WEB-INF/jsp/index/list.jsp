@@ -23,6 +23,20 @@
                 <div class="site-heading">
                     <h1>我的博客</h1>
                     <hr class="small">
+                    <div id="mc_embed_signup">
+                        <form role="form"
+                              action=""
+                              method="post">
+                            <div class="input-group input-group-lg">
+                                <input type="text" name="keywords" class="form-control"
+                                       placeholder="" required>
+                                <span class="input-group-btn">
+                                    <button type="submit" name="subscribe" class="btn btn-secondary">立即搜索</button>
+                                </span>
+                            </div>
+
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
