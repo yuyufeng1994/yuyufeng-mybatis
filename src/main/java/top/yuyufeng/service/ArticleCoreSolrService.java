@@ -8,11 +8,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.solr.core.query.result.HighlightEntry;
 import org.springframework.data.solr.core.query.result.HighlightPage;
 import org.springframework.stereotype.Service;
-import org.springframework.web.util.HtmlUtils;
 import top.yuyufeng.dao.ArticleInfoMapper;
 import top.yuyufeng.entity.ArticleInfo;
 import top.yuyufeng.solr.dao.ArticleCoreRepository;
 import top.yuyufeng.solr.entity.ArticleCore;
+import top.yuyufeng.utils.HtmlUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,7 +63,7 @@ public class ArticleCoreSolrService {
         articleCore.setArticleId(articleInfo.getArticleId());
         articleCore.setId(articleInfo.getArticleId() + "");
         articleCore.setArticleTitle(articleInfo.getArticleTitle());
-        articleCore.setArticleContent(HtmlUtils.htmlEscape(articleInfo.getArticleContent()));
+        articleCore.setArticleContent(HtmlUtils.deleteAllHTMLTag(articleInfo.getArticleContent()));
         articleCoreRepository.save(articleCore);
     }
 }

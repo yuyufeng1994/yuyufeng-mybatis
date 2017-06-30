@@ -12,6 +12,7 @@ import org.springframework.data.solr.core.query.result.HighlightEntry;
 import org.springframework.data.solr.core.query.result.HighlightPage;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.web.util.HtmlUtils;
 import top.yuyufeng.dao.ArticleInfoMapper;
 import top.yuyufeng.entity.ArticleInfo;
 import top.yuyufeng.solr.dao.ArticleCoreRepository;
@@ -37,7 +38,7 @@ public class App {
     public void testHightLight() {
         Pageable pageable = new PageRequest(2, 5);
         HighlightPage<ArticleCore> highlightPage = articleCoreRepository.findByKeywords("Java程序员", pageable);
-        Page<ArticleCore> articleCoreList = new Page<>(1,5);
+        Page<ArticleCore> articleCoreList = new Page<>(1, 5);
 
         for (int i = 0; i < highlightPage.getHighlighted().size(); i++) {
             ArticleCore articleCore = highlightPage.getHighlighted().get(i).getEntity();
@@ -53,7 +54,7 @@ public class App {
         }
         articleCoreList.setTotal(highlightPage.getTotalElements());
 
-        PageInfo<ArticleCore> pageInfo = new PageInfo<>(articleCoreList,8);
+        PageInfo<ArticleCore> pageInfo = new PageInfo<>(articleCoreList, 8);
         System.out.println(articleCoreList);
     }
 
@@ -73,22 +74,41 @@ public class App {
     public void testAddList() throws InterruptedException {
         List<ArticleInfo> articleInfos = articleInfoMapper.queryList();
         for (ArticleInfo articleInfo : articleInfos) {
-
             ArticleCore articleCore = new ArticleCore();
             articleCore.setArticleId(articleInfo.getArticleId());
             articleCore.setId(articleInfo.getArticleId() + "");
             articleCore.setArticleTitle(articleInfo.getArticleTitle());
-            articleCore.setArticleContent(articleInfo.getArticleContent());
+            articleCore.setArticleContent(deleteAllHTMLTag(articleInfo.getArticleContent()));
             articleCoreRepository.save(articleCore);
             System.out.println(articleInfo.getArticleTitle() + " 建立索引成功!");
-            Thread.sleep(1000);
+            Thread.sleep(500);
         }
 
     }
 
+    /**
+     * 删除所有的HTML标签
+     *
+     * @param source 需要进行除HTML的文本
+     * @return
+     */
+    public static String deleteAllHTMLTag(String source) {
+
+        if (source == null) {
+            return "";
+        }
+
+        String s = source;
+        /** 删除普通标签  */
+        s = s.replaceAll("<(S*?)[^>]*>.*?|<.*? />", "");
+        /** 删除转义字符 */
+        s = s.replaceAll("&.{2,6}?;", "");
+        return s;
+    }
+
     @Test
     public void testDel() {
-        articleCoreRepository.delete("change.me");
+        articleCoreRepository.deleteAll();
     }
 
 
