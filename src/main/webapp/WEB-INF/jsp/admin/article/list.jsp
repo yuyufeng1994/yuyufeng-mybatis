@@ -52,6 +52,10 @@
                                         onclick="del('${appServer}/admin/article/delete/${a.articleId}?pageNo=${page.pageNum}')">
                                     删除
                                 </button>
+                                <button class="btn btn-primary"
+                                        onclick="createIndex('${a.articleId}')">
+                                    索引
+                                </button>
                             </td>
                         </tr>
                     </c:forEach>
@@ -104,6 +108,12 @@
         } else {
             return false;
         }
+    }
+
+    function createIndex(id) {
+        $.post("${appServer}/admin/article/index/" + id, function (res) {
+            alert(res)
+        })
     }
 
 

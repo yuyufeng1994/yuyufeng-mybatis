@@ -1,9 +1,11 @@
 package solr;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.solr.core.query.result.HighlightEntry;
@@ -15,6 +17,7 @@ import top.yuyufeng.entity.ArticleInfo;
 import top.yuyufeng.solr.dao.ArticleCoreRepository;
 import top.yuyufeng.solr.entity.ArticleCore;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,15 +35,27 @@ public class App {
 
     @Test
     public void testHightLight() {
-        Pageable pageable = new PageRequest(0, 10);
-        HighlightPage<ArticleCore> page =  articleCoreRepository.findByArticleContent("Java程序员",pageable);
-        for (ArticleCore articleCore : page.getContent()) {
-            for (HighlightEntry.Highlight highlight : page.getHighlights(articleCore)) {
-                System.out.println(highlight.getSnipplets());
-            }
-        }
-    }
+        Pageable pageable = new PageRequest(2, 5);
+        HighlightPage<ArticleCore> highlightPage = articleCoreRepository.findByKeywords("Java程序员", pageable);
+        Page<ArticleCore> articleCoreList = new Page<>(1,5);
 
+        for (int i = 0; i < highlightPage.getHighlighted().size(); i++) {
+            ArticleCore articleCore = highlightPage.getHighlighted().get(i).getEntity();
+            for (HighlightEntry.Highlight highlight : highlightPage.getHighlighted().get(i).getHighlights()) {
+                if ("articleTitle".equals(highlight.getField().getName())) {
+                    articleCore.setArticleTitle(highlight.getSnipplets().get(0));
+                } else if ("articleContent".equals(highlight.getField().getName())) {
+                    articleCore.setArticleContent(highlight.getSnipplets().get(0));
+                }
+
+            }
+            articleCoreList.add(articleCore);
+        }
+        articleCoreList.setTotal(highlightPage.getTotalElements());
+
+        PageInfo<ArticleCore> pageInfo = new PageInfo<>(articleCoreList,8);
+        System.out.println(articleCoreList);
+    }
 
 
     @Test
@@ -65,7 +80,7 @@ public class App {
             articleCore.setArticleTitle(articleInfo.getArticleTitle());
             articleCore.setArticleContent(articleInfo.getArticleContent());
             articleCoreRepository.save(articleCore);
-            System.out.println(articleInfo.getArticleTitle()+" 建立索引成功!");
+            System.out.println(articleInfo.getArticleTitle() + " 建立索引成功!");
             Thread.sleep(1000);
         }
 
@@ -77,13 +92,12 @@ public class App {
     }
 
 
-
     @Test
     public void test() {
-        Pageable pageable = new PageRequest(0, 10);
+       /* Pageable pageable = new PageRequest(0, 10);
         Page<ArticleCore> page = articleCoreRepository.findAll(pageable);
         for (ArticleCore testCore : page.getContent()) {
             System.out.println(testCore.getArticleTitle());
-        }
+        }*/
     }
 }

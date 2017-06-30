@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import top.yuyufeng.dao.ArticleInfoMapper;
 import top.yuyufeng.entity.ArticleInfo;
+import top.yuyufeng.service.ArticleCoreSolrService;
 import top.yuyufeng.service.ArticleService;
+import top.yuyufeng.solr.entity.ArticleCore;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -33,6 +35,9 @@ public class IndexController {
     private Map<String, String> urlMap;
     @Autowired
     private ArticleService articleService;
+
+    @Autowired
+    private ArticleCoreSolrService articleCoreSolrService;
 
     @RequestMapping("/home")
     public String toHome(Model model) {
@@ -73,6 +78,15 @@ public class IndexController {
         return "index/list";
     }
 
+    @RequestMapping("/search/{pageNo}")
+    public String toList(Model model, @PathVariable("pageNo") int pageNo, String keywords) {
+        pageNo = pageNo - 1;
+        PageInfo<ArticleCore> page = articleCoreSolrService.queryByKeyWords(pageNo, 10, keywords);
+        model.addAttribute("page", page);
+        model.addAttribute("keywords", keywords);
+        return "index/search";
+    }
+
     @RequestMapping("/login")
     public String toLogin(String returnUrl, Model model) {
         model.addAttribute("returnUrl", returnUrl);
@@ -80,7 +94,7 @@ public class IndexController {
     }
 
     @RequestMapping("/doLogin")
-    public String doLogin(String username, String password, HttpSession session,String returnUrl) throws IOException {
+    public String doLogin(String username, String password, HttpSession session, String returnUrl) throws IOException {
         if (null == username || null == password) {
             return "redirect:" + urlMap.get("appServer") + "/login";
         }

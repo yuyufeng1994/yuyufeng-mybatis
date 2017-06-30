@@ -18,6 +18,6 @@ public interface ArticleCoreRepository extends SolrCrudRepository<ArticleCore, S
     Page<ArticleCore> findAll(Pageable page);
 
     @Highlight(prefix = "<font style='color:red'>", postfix = "</font>")
-    HighlightPage<ArticleCore> findByArticleContent(String articleContent, Pageable page);
+    HighlightPage<ArticleCore> findByKeywords(String articleContent, Pageable page);
 
 }

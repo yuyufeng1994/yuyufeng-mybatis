@@ -28,7 +28,7 @@
                               action="${appServer}/search/1"
                               method="post">
                             <div class="input-group input-group-lg">
-                                <input type="text" name="keywords" class="form-control"
+                                <input type="text" name="keywords" class="form-control" value="${keywords}"
                                        placeholder="" required>
                                 <span class="input-group-btn">
                                     <button type="submit" name="subscribe" class="btn btn-secondary">立即搜索</button>
@@ -54,32 +54,32 @@
                                 ${a.articleTitle}
                         </h2>
                         <h3 class="post-subtitle">
-                                ${a.articleSubtitle}
+                                ${a.articleContent}
                         </h3>
                     </a>
-                    <p class="post-meta">Posted by <a href="#">yyf</a> ${a.articleTime}</p>
+                    <%--<p class="post-meta">Posted by <a href="#">yyf</a> ${a.articleTime}</p>--%>
                 </div>
                 <hr>
             </c:forEach>
             <!-- Pager -->
             <ul class="pagination pagination-lg">
-                <c:if test="${page.pageNum != 1}">
-                    <li><a href="${appServer}/list/1">&laquo;</a></li>
+                <c:if test="${page.pageNum != 1-1}">
+                    <li><a href="${appServer}/search/1?keywords=${keywords}">&laquo;</a></li>
                 </c:if>
                 <c:forEach items="${page.navigatepageNums}" var="c">
-                    <c:if test="${c == page.pageNum}">
+                    <c:if test="${c == page.pageNum+1}">
                         <li class="active">
                             <a>${c}</a>
                         </li>
                     </c:if>
-                    <c:if test="${c != page.pageNum}">
+                    <c:if test="${c != page.pageNum+1}">
                         <li>
-                            <a href="${appServer}/list/${c}">${c}</a>
+                            <a href="${appServer}/search/${c}?keywords=${keywords}">${c}</a>
                         </li>
                     </c:if>
                 </c:forEach>
-                <c:if test="${page.pageNum != page.pages}">
-                    <li><a href="${appServer}/list/${page.pages}">&raquo;</a></li>
+                <c:if test="${page.pageNum != page.pages-1}">
+                    <li><a href="${appServer}/search/${page.pages}?keywords=${keywords}">&raquo;</a></li>
                 </c:if>
 
             </ul>

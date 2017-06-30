@@ -35,7 +35,7 @@ public class ArticleService {
 
         PageHelper.startPage(i, i1, "article_time desc");
         List<ArticleInfo> list = articleInfoMapper.queryList();
-        PageInfo<ArticleInfo> page = new PageInfo<ArticleInfo>(list, 10);
+        PageInfo<ArticleInfo> page = new PageInfo<ArticleInfo>(list,8);
         return page;
     }
 

@@ -6,9 +6,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.HtmlUtils;
 import top.yuyufeng.entity.ArticleInfo;
+import top.yuyufeng.service.ArticleCoreSolrService;
 import top.yuyufeng.service.ArticleService;
+import top.yuyufeng.solr.entity.ArticleCore;
 import top.yuyufeng.vo.MessageVo;
 
 import javax.annotation.Resource;
@@ -29,6 +32,15 @@ public class ArticleController {
 
     @Autowired
     private ArticleService articleService;
+
+    @Autowired
+    private ArticleCoreSolrService articleCoreSolrService;
+
+    @RequestMapping("/index/{articleId}")
+    public @ResponseBody  String toCreateIndex(Model model, @PathVariable("articleId") Long articleId) {
+        articleCoreSolrService.save(articleId);
+        return "success";
+    }
 
 
     @RequestMapping("/manage/{pageNo}")
