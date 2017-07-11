@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.yuyufeng.dao.ArticleCatalogMapper">
+  <resultMap id="BaseResultMap" type="top.yuyufeng.entity.ArticleCatalog">
+    <constructor>
+      <idArg column="article_catalog_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="article_catalog_title" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="article_catalog_content" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    article_catalog_id, article_catalog_title, article_catalog_content, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from article_catalog
+    where article_catalog_id = #{articleCatalogId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from article_catalog
+    where article_catalog_id = #{articleCatalogId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="top.yuyufeng.entity.ArticleCatalog">
+    insert into article_catalog (article_catalog_id, article_catalog_title, 
+      article_catalog_content, update_time)
+    values (#{articleCatalogId,jdbcType=BIGINT}, #{articleCatalogTitle,jdbcType=VARCHAR}, 
+      #{articleCatalogContent,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="top.yuyufeng.entity.ArticleCatalog">
+    insert into article_catalog
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="articleCatalogId != null">
+        article_catalog_id,
+      </if>
+      <if test="articleCatalogTitle != null">
+        article_catalog_title,
+      </if>
+      <if test="articleCatalogContent != null">
+        article_catalog_content,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="articleCatalogId != null">
+        #{articleCatalogId,jdbcType=BIGINT},
+      </if>
+      <if test="articleCatalogTitle != null">
+        #{articleCatalogTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="articleCatalogContent != null">
+        #{articleCatalogContent,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="top.yuyufeng.entity.ArticleCatalog">
+    update article_catalog
+    <set>
+      <if test="articleCatalogTitle != null">
+        article_catalog_title = #{articleCatalogTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="articleCatalogContent != null">
+        article_catalog_content = #{articleCatalogContent,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where article_catalog_id = #{articleCatalogId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="top.yuyufeng.entity.ArticleCatalog">
+    update article_catalog
+    set article_catalog_title = #{articleCatalogTitle,jdbcType=VARCHAR},
+      article_catalog_content = #{articleCatalogContent,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where article_catalog_id = #{articleCatalogId,jdbcType=BIGINT}
+  </update>
+
+  <select id="queryList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from article_catalog
+  </select>
+</mapper>
