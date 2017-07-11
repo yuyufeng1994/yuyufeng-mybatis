@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.HtmlUtils;
 import top.yuyufeng.entity.ArticleInfo;
+import top.yuyufeng.service.ArticleCatalogService;
 import top.yuyufeng.service.ArticleCoreSolrService;
 import top.yuyufeng.service.ArticleService;
 import top.yuyufeng.solr.entity.ArticleCore;
@@ -34,6 +35,9 @@ public class ArticleController {
     private ArticleService articleService;
 
     @Autowired
+    private ArticleCatalogService articleCatalogService;
+
+    @Autowired
     private ArticleCoreSolrService articleCoreSolrService;
 
     @RequestMapping("/index/{articleId}")
@@ -56,7 +60,7 @@ public class ArticleController {
         articleInfo.setArticleTime(new Date());
         articleService.update(articleInfo);
 //        model.addAttribute("messageVo", new MessageVo("修改成功！", urlMap.get("appServer") + "/article/" + articleInfo.getArticleId(), "立即查看"));
-        model.addAttribute("messageVo", new MessageVo("修改成功！", urlMap.get("appServer") + "/admin/article/manage/" + pageNo, "返回"));
+        model.addAttribute("messageVo", new MessageVo("提交成功！", urlMap.get("appServer") + "/admin/article/manage/" + pageNo, "返回"));
         return "admin/message";
     }
 
@@ -65,6 +69,7 @@ public class ArticleController {
     public String toEdit(@PathVariable("articleId") Long articleId, Model model) {
         ArticleInfo articleInfo = articleService.getArticle(articleId);
         model.addAttribute("article", articleInfo);
+        model.addAttribute("catalogs",articleCatalogService.queryArticleCatalogList());
         return "admin/article/edit";
     }
 
@@ -76,15 +81,16 @@ public class ArticleController {
     }
 
     @RequestMapping("/new")
-    public String toNew() {
-        return "admin/article/new";
+    public String toNew(Model model) {
+        model.addAttribute("catalogs",articleCatalogService.queryArticleCatalogList());
+        return "admin/article/edit";
     }
 
-    @RequestMapping("/publish")
+    /*@RequestMapping("/publish")
     public String doPublish(ArticleInfo articleInfo, Model model) {
         articleInfo.setArticleTime(new Date());
         articleService.add(articleInfo);
         model.addAttribute("messageVo", new MessageVo("发表成功！", urlMap.get("appServer") + "/article/" + articleInfo.getArticleId(), "立即查看"));
         return "admin/message";
-    }
+    }*/
 }

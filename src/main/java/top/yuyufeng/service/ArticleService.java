@@ -5,6 +5,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import top.yuyufeng.dao.ArticleInfoMapper;
 import top.yuyufeng.entity.ArticleInfo;
 
@@ -24,6 +25,9 @@ public class ArticleService {
     }
 
     public int update(ArticleInfo articleInfo) {
+        if (StringUtils.isEmpty(articleInfo.getArticleId())) {
+            return articleInfoMapper.insertSelective(articleInfo);
+        }
         return articleInfoMapper.updateByPrimaryKeySelective(articleInfo);
     }
 
@@ -35,7 +39,7 @@ public class ArticleService {
 
         PageHelper.startPage(i, i1, "article_time desc");
         List<ArticleInfo> list = articleInfoMapper.queryList();
-        PageInfo<ArticleInfo> page = new PageInfo<ArticleInfo>(list,8);
+        PageInfo<ArticleInfo> page = new PageInfo<ArticleInfo>(list, 8);
         return page;
     }
 

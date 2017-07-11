@@ -20,7 +20,12 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">编辑文章</h1>
+                <c:if test="${empty article.articleId}">
+                    <h1 class="page-header">发表文章</h1>
+                </c:if>
+                <c:if test="${!empty article.articleId}">
+                    <h1 class="page-header">编辑文章</h1>
+                </c:if>
 
             </div>
             <!-- /.col-lg-12 -->
@@ -54,8 +59,19 @@
                         <div id="editor">${article.articleContent}</div>
                         <p class="help-block">请输入正文</p>
                     </div>
+
+                    <div class="form-group">
+                        <label>分类</label>
+                        <select class="form-control" name="articleCatalogId">
+                            <c:forEach items="${catalogs}" var="c">
+                                <option value="${c.articleCatalogId}">${c.articleCatalogTitle}</option>
+                            </c:forEach>
+                        </select>
+                        <p class="help-block">请选择分类</p>
+                    </div>
+
                     <input type="hidden" value="" name="articleContent" id="articleContent">
-                    <button type="button" class="btn btn-default" id="publish-button">修改</button>
+                    <button type="button" class="btn btn-default" id="publish-button">立即提交</button>
                 </form>
                 <hr/>
 

@@ -63,7 +63,7 @@
                     <a href="${appServer}/admin"><i class="glyphicon glyphicon-text-background"></i> Article<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
                         <li>
-                            <a href="${appServer}/admin/article/new">发表文章</a>
+                            <a href="${appServer}/admin/article/new?pageNo=1">发表文章</a>
                         </li>
                         <li>
                             <a href="${appServer}/admin/article/manage/1">文章管理</a>

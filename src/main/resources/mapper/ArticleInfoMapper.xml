@@ -8,6 +8,8 @@
       <arg column="article_subtitle" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="article_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
       <arg column="article_photo_path" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="article_user_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="article_catalog_id" javaType="java.lang.Long" jdbcType="BIGINT" />
     </constructor>
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="top.yuyufeng.entity.ArticleInfo">
@@ -17,17 +19,20 @@
       <arg column="article_subtitle" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="article_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
       <arg column="article_photo_path" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="article_user_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="article_catalog_id" javaType="java.lang.Long" jdbcType="BIGINT" />
       <arg column="article_content" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List">
-    article_id, article_title, article_subtitle, article_time, article_photo_path
+    article_id, article_title, article_subtitle, article_time, article_photo_path, article_user_id,
+    article_catalog_id
   </sql>
   <sql id="Blob_Column_List">
     article_content
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
-    select 
+    select
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
@@ -39,14 +44,14 @@
     where article_id = #{articleId,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="top.yuyufeng.entity.ArticleInfo">
-    insert into article_info (article_id, article_title, article_subtitle, 
-      article_time, article_photo_path, article_content
-      )
-    values (#{articleId,jdbcType=BIGINT}, #{articleTitle,jdbcType=VARCHAR}, #{articleSubtitle,jdbcType=VARCHAR}, 
-      #{articleTime,jdbcType=TIMESTAMP}, #{articlePhotoPath,jdbcType=VARCHAR}, #{articleContent,jdbcType=LONGVARCHAR}
-      )
+    insert into article_info (article_id, article_title, article_subtitle,
+    article_time, article_photo_path, article_user_id,
+    article_catalog_id, article_content)
+    values (#{articleId,jdbcType=BIGINT}, #{articleTitle,jdbcType=VARCHAR}, #{articleSubtitle,jdbcType=VARCHAR},
+    #{articleTime,jdbcType=TIMESTAMP}, #{articlePhotoPath,jdbcType=VARCHAR}, #{articleUserId,jdbcType=BIGINT},
+    #{articleCatalogId,jdbcType=BIGINT}, #{articleContent,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="top.yuyufeng.entity.ArticleInfo" useGeneratedKeys="true"  keyProperty="articleId">
+  <insert id="insertSelective" parameterType="top.yuyufeng.entity.ArticleInfo">
     insert into article_info
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="articleId != null">
@@ -63,6 +68,12 @@
       </if>
       <if test="articlePhotoPath != null">
         article_photo_path,
+      </if>
+      <if test="articleUserId != null">
+        article_user_id,
+      </if>
+      <if test="articleCatalogId != null">
+        article_catalog_id,
       </if>
       <if test="articleContent != null">
         article_content,
@@ -84,6 +95,12 @@
       <if test="articlePhotoPath != null">
         #{articlePhotoPath,jdbcType=VARCHAR},
       </if>
+      <if test="articleUserId != null">
+        #{articleUserId,jdbcType=BIGINT},
+      </if>
+      <if test="articleCatalogId != null">
+        #{articleCatalogId,jdbcType=BIGINT},
+      </if>
       <if test="articleContent != null">
         #{articleContent,jdbcType=LONGVARCHAR},
       </if>
@@ -104,6 +121,12 @@
       <if test="articlePhotoPath != null">
         article_photo_path = #{articlePhotoPath,jdbcType=VARCHAR},
       </if>
+      <if test="articleUserId != null">
+        article_user_id = #{articleUserId,jdbcType=BIGINT},
+      </if>
+      <if test="articleCatalogId != null">
+        article_catalog_id = #{articleCatalogId,jdbcType=BIGINT},
+      </if>
       <if test="articleContent != null">
         article_content = #{articleContent,jdbcType=LONGVARCHAR},
       </if>
@@ -113,10 +136,12 @@
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="top.yuyufeng.entity.ArticleInfo">
     update article_info
     set article_title = #{articleTitle,jdbcType=VARCHAR},
-      article_subtitle = #{articleSubtitle,jdbcType=VARCHAR},
-      article_time = #{articleTime,jdbcType=TIMESTAMP},
-      article_photo_path = #{articlePhotoPath,jdbcType=VARCHAR},
-      article_content = #{articleContent,jdbcType=LONGVARCHAR}
+    article_subtitle = #{articleSubtitle,jdbcType=VARCHAR},
+    article_time = #{articleTime,jdbcType=TIMESTAMP},
+    article_photo_path = #{articlePhotoPath,jdbcType=VARCHAR},
+    article_user_id = #{articleUserId,jdbcType=BIGINT},
+    article_catalog_id = #{articleCatalogId,jdbcType=BIGINT},
+    article_content = #{articleContent,jdbcType=LONGVARCHAR}
     where article_id = #{articleId,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="top.yuyufeng.entity.ArticleInfo">
@@ -124,7 +149,9 @@
     set article_title = #{articleTitle,jdbcType=VARCHAR},
       article_subtitle = #{articleSubtitle,jdbcType=VARCHAR},
       article_time = #{articleTime,jdbcType=TIMESTAMP},
-      article_photo_path = #{articlePhotoPath,jdbcType=VARCHAR}
+      article_photo_path = #{articlePhotoPath,jdbcType=VARCHAR},
+      article_user_id = #{articleUserId,jdbcType=BIGINT},
+      article_catalog_id = #{articleCatalogId,jdbcType=BIGINT}
     where article_id = #{articleId,jdbcType=BIGINT}
   </update>
 
